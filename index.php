@@ -16,7 +16,7 @@ if (!isset($_SESSION["books"])) {
     $_SESSION["books"] = [
         [
             "id" => 1,
-            "title" => "Java Programming",
+            "title" => "Java: The Complete Reference",
             "author" => "Herbert Schildt",
             "genre" => "Technology",
             "year" => 2018,
@@ -99,11 +99,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])) {
 // add or update book
 if ($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["delete_id"])) {
 
-    $submittedData["title"] = htmlspecialchars(trim($_POST["title"] ?? ""));
-    $submittedData["author"] = htmlspecialchars(trim($_POST["author"] ?? ""));
-    $submittedData["genre"] = htmlspecialchars(trim($_POST["genre"] ?? ""));
-    $submittedData["year"] = htmlspecialchars(trim($_POST["year"] ?? ""));
-    $submittedData["pages"] = htmlspecialchars(trim($_POST["pages"] ?? ""));
+    $submittedData["title"] = trim($_POST["title"] ?? "");
+    $submittedData["author"] = trim($_POST["author"] ?? "");
+    $submittedData["genre"] = trim($_POST["genre"] ?? "");
+    $submittedData["year"] = trim($_POST["year"] ?? "");
+    $submittedData["pages"] = trim($_POST["pages"] ?? "");
 
     if ($submittedData["title"] == "") {
         $errors["title"] = "Title is required.";
